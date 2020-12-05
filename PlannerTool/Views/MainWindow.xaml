@@ -11,8 +11,21 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
-    <Grid>
-        <Button Margin="150" Content="Press" Command="{Binding CommandProp}" CommandParameter="{Binding ElementName=MainWindowUI}"/>
 
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Info" Command="{Binding PropInfoClicked}" CommandParameter="{Binding ElementName=MainWindowUI}"/>
+        </Menu>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
+                <TextBox Margin="10" TextWrapping="NoWrap" Width="300"/>
+                <TextBox Margin="10" Height="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <Calendar Margin="10"/>
+                <Button Content="Press Here" Command="{Binding CommandProp}" CommandParameter="{Binding ElementName=MainWindowUI}"/>
+            </StackPanel>
+
+        </StackPanel>
+    </DockPanel>
 </Window>
