@@ -4,6 +4,7 @@
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5" 
   IgnorableNamespaces="uap rescap">
 
   <Identity
@@ -35,7 +36,8 @@
         Description="ApplicationPackaging"
         BackgroundColor="transparent"
         Square150x150Logo="Images\Square150x150Logo.png"
-        Square44x44Logo="Images\Square44x44Logo.png">
+        Square44x44Logo="Images\Square44x44Logo.png"
+        AppListEntry="none">
         <uap:DefaultTile Wide310x150Logo="Images\Wide310x150Logo.png" />
         <uap:SplashScreen Image="Images\SplashScreen.png" />
       </uap:VisualElements>
@@ -46,4 +48,15 @@
     <Capability Name="internetClient" />
     <rescap:Capability Name="runFullTrust" />
   </Capabilities>
+
+  <!--<Extensions>  
+    <uap5:Extension   
+      Category="windows.appExecutionAlias"   
+      Executable="PlannerTool.exe"   
+      EntryPoint="PlannerTool.App">  
+      <uap5:AppExecutionAlias>  
+        <uap5:ExecutionAlias Alias="PlannerTool.exe" />  
+      </uap5:AppExecutionAlias>  
+    </uap5:Extension>  
+  </Extensions>-->  
 </Package>

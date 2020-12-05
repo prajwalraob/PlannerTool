@@ -28,10 +28,11 @@ namespace PlannerTool.ViewModels
                         .GetToastContent();
 
             // Create the notification
-            var notif = new ToastNotification(content.GetXml());
+            var notif = new ScheduledToastNotification(content.GetXml(), DateTime.Now.AddSeconds(30));
 
+            //https://docs.microsoft.com/en-us/windows/uwp/design/shell/tiles-and-notifications/scheduled-toast
             // And then show it
-            ToastNotificationManager.CreateToastNotifier().Show(notif);
+            ToastNotificationManager.CreateToastNotifier().AddToSchedule(notif);
 
         }
 
