@@ -18,14 +18,14 @@
         </Menu>
         <StackPanel Orientation="Horizontal">
             <StackPanel Orientation="Vertical">
-                <TextBox Margin="10" TextWrapping="NoWrap" Width="300"/>
-                <TextBox Margin="10" Height="200"/>
+                <TextBox Margin="10" TextWrapping="NoWrap" Width="300" Text="{Binding Title, Mode=TwoWay}"/>
+                <TextBox Margin="10" Height="200" Text="{Binding Body, Mode=TwoWay}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <Calendar Margin="10"/>
-                <Button Content="Press Here" Command="{Binding CommandProp}" CommandParameter="{Binding ElementName=MainWindowUI}"/>
+                <local:TimeSetter Margin="50,0,0,20"/>                
+                <Button Content="Press Here" Command="{Binding RunCommandProp}" CommandParameter="{Binding ElementName=MainWindowUI}"/>
             </StackPanel>
-
         </StackPanel>
     </DockPanel>
 </Window>

@@ -70,8 +70,8 @@
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TimeControl.xaml.cs">
-      <DependentUpon>TimeControl.xaml</DependentUpon>
+    <Compile Include="Views\TimeSetter.xaml.cs">
+      <DependentUpon>TimeSetter.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowsServiceCreator.cs" />
   </ItemGroup>
@@ -106,12 +106,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\TimeControl.xaml">
+    <Page Include="Views\TimeSetter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes">
+      <Version>3.2.0</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
       <Version>6.1.1</Version>
     </PackageReference>
