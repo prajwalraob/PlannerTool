@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PlannerTool.Views
+namespace Notifier
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,7 +23,11 @@ namespace PlannerTool.Views
         public MainWindow()
         {
             InitializeComponent();
-            calendar.BlackoutDates.AddDatesInPast();
+        }
+
+        public void CloseMethod(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

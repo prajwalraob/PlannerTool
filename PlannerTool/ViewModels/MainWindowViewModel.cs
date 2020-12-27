@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Notifications;
+using PlannerTool.Model;
 
 //https://adamtheautomator.com/how-to-set-up-and-manage-scheduled-tasks-with-powershell/#Deleting_a_Scheduled_Task
 //https://www.c-sharpcorner.com/article/setup-task-scheduler-to-run-application/
@@ -33,6 +34,28 @@ namespace PlannerTool.ViewModels
             set
             {
                 _body = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private DateTime _startDate;
+        public DateTime StartDate
+        {
+            get => _startDate;
+            set
+            {
+                _startDate = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private DateTime _endDate;
+        public DateTime EndDate
+        {
+            get => _endDate;
+            set
+            {
+                _endDate = value;
                 OnPropertyChanged();
             }
         }
@@ -75,8 +98,10 @@ namespace PlannerTool.ViewModels
             CommandProp = new Command(Commands, CanExecute);
             RunCommandProp = new Command(RunCommand);
             SelectedDate = DateTime.Today;
-            Minutes = null;
-            Hours = null;
+            StartDate = DateTime.MinValue;
+            EndDate = DateTime.Today.AddDays(-1);
+            Minutes = 0;
+            Hours = 0;
         }
 
         public void Commands(object wnd)
@@ -103,7 +128,7 @@ namespace PlannerTool.ViewModels
 
         public void RunCommand(object wnd)
         {
-
+            ReadTask read = new ReadTask(Title, Body, SelectedDate, Hours.Value, Minutes.Value);
         }
     }
 }
