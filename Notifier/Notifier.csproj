@@ -95,4 +95,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if exist "D:\software_test\plannertool" copy "$(ProjectDir)$(OutputPath)*.dll" "D:\software_test\plannertool"
+if exist "D:\software_test\plannertool" copy "$(ProjectDir)$(OutputPath)*.exe" "D:\software_test\plannertool"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

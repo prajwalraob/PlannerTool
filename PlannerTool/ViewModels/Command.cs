@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PlannerTool.ViewModels
 {
-    public class Command : ICommand
+    class Command : ICommand
     {
         private readonly Action<object> execute;
         private readonly Predicate<object> canExecute;

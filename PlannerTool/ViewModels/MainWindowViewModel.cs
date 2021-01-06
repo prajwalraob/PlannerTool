@@ -1,11 +1,9 @@
-﻿using Microsoft.Toolkit.Uwp.Notifications;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.UI.Notifications;
-using PlannerTool.Model;
+using PlannerTool.TaskCreation;
 
 //https://adamtheautomator.com/how-to-set-up-and-manage-scheduled-tasks-with-powershell/#Deleting_a_Scheduled_Task
 //https://www.c-sharpcorner.com/article/setup-task-scheduler-to-run-application/
@@ -107,17 +105,17 @@ namespace PlannerTool.ViewModels
         public void Commands(object wnd)
         {
 
-            var content = new ToastContentBuilder()
-                        .AddText("Andrew sent you a picture")
-                        .AddText("Check this out, Happy Canyon in Utah!")
-                        .GetToastContent();
+            //var content = new ToastContentBuilder()
+            //            .AddText("Andrew sent you a picture")
+            //            .AddText("Check this out, Happy Canyon in Utah!")
+            //            .GetToastContent();
 
-            // Create the notification
-            var notif = new ScheduledToastNotification(content.GetXml(), DateTime.Now.AddSeconds(30));
-            //https://www.thomasclaudiushuber.com/2019/04/26/calling-windows-10-apis-from-your-wpf-application/
-            //https://docs.microsoft.com/en-us/windows/uwp/design/shell/tiles-and-notifications/scheduled-toast
-            // And then show it
-            ToastNotificationManager.CreateToastNotifier().AddToSchedule(notif);
+            //// Create the notification
+            //var notif = new ScheduledToastNotification(content.GetXml(), DateTime.Now.AddSeconds(30));
+            ////https://www.thomasclaudiushuber.com/2019/04/26/calling-windows-10-apis-from-your-wpf-application/
+            ////https://docs.microsoft.com/en-us/windows/uwp/design/shell/tiles-and-notifications/scheduled-toast
+            //// And then show it
+            //ToastNotificationManager.CreateToastNotifier().AddToSchedule(notif);
 
         }
 
@@ -129,6 +127,8 @@ namespace PlannerTool.ViewModels
         public void RunCommand(object wnd)
         {
             ReadTask read = new ReadTask(Title, Body, SelectedDate, Hours.Value, Minutes.Value);
+            CreateWindowsTask create = new CreateWindowsTask(read.TaskObject);
+            create.CreateTaskEntry();
         }
     }
 }

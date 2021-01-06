@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using PlannerTool.Views;
+using System.IO;
 
 namespace PlannerTool
 {
@@ -16,6 +17,7 @@ namespace PlannerTool
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            GlobalVariables.WorkingFolder = Directory.GetCurrentDirectory();
             MainWindow wnd = new MainWindow();
             wnd.ShowDialog();
         }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PlannerTool.ViewModels
 {
-    public class NotifyPropertyChanged : INotifyPropertyChanged
+    class NotifyPropertyChanged : INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
