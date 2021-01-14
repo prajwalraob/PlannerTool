@@ -2,6 +2,7 @@
 using System.Xml;
 using System.Diagnostics;
 using System.IO;
+using System.Web;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -124,7 +125,7 @@ namespace PlannerTool.TaskCreation
         {
             if (!(TaskObject == null))
             {
-                string jsonString = JsonConvert.SerializeObject(TaskObject);
+                string jsonString =  JsonConvert.SerializeObject(TaskObject).Replace("\"", "\\u022");
                 return jsonString;
             }
             return null;
