@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PlannerTool.Models
 {
-    public class TaskItem
+    public class TaskItem : ITaskItem
     {
         public string Title { get; set; }
         public string Body { get; set; }

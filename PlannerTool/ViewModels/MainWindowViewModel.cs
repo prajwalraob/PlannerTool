@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Autofac;
 using PlannerTool.TaskCreation;
 
 //https://adamtheautomator.com/how-to-set-up-and-manage-scheduled-tasks-with-powershell/#Deleting_a_Scheduled_Task
@@ -126,9 +127,12 @@ namespace PlannerTool.ViewModels
 
         public void RunCommand(object wnd)
         {
-            ReadTask read = new ReadTask(Title, Body, SelectedDate, Hours.Value, Minutes.Value);
-            CreateWindowsTask create = new CreateWindowsTask(read.TaskObject);
-            create.CreateTaskEntry();
+            using(var scope = GlobalVariables.Container.BeginLifetimeScope())
+            {
+                var create = scope.Resolve<ICreateTask>();
+                create.TaskObject = Factory.GetTaskItem(Title, Body, SelectedDate, Hours.Value, Minutes.Value);
+                create.CreateTaskEntry();
+            }
         }
     }
 }

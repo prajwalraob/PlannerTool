@@ -24,6 +24,7 @@ namespace PlannerTool.Views
         {
             InitializeComponent();
             calendar.BlackoutDates.AddDatesInPast();
+            AutofacConfig.Config();
         }
     }
 }

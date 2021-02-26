@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Autofac;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,5 +10,7 @@ namespace PlannerTool
     internal static class GlobalVariables
     {
         internal static string WorkingFolder { get; set; }
+
+        internal static IContainer Container { get; set; }
     }
 }

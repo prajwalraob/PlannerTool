@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:PlannerTool.Views"
         xmlns:vm="clr-namespace:PlannerTool.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="320" Width="550">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
@@ -66,7 +66,7 @@
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <Calendar Name="calendar" Margin="10" SelectedDate="{Binding SelectedDate, Mode=Default}"/>
-                <local:TimeSetter Margin="50,0,0,20" Minutes="{Binding Minutes, Mode=OneWayToSource, UpdateSourceTrigger=Default}"
+                <local:TimeSetter Margin="70,0,0,20" Minutes="{Binding Minutes, Mode=OneWayToSource, UpdateSourceTrigger=Default}"
                                   Hours="{Binding Hours, Mode=OneWayToSource, UpdateSourceTrigger=Default}"/>                
                 <Button Content="Press Here" Command="{Binding RunCommandProp}" CommandParameter="{Binding ElementName=MainWindowUI}"/>
             </StackPanel>

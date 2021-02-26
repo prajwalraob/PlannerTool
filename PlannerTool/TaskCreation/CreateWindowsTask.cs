@@ -14,13 +14,12 @@ using Newtonsoft.Json;
 
 namespace PlannerTool.TaskCreation
 {
-    class CreateWindowsTask
+    class CreateWindowsTask : ICreateTask
     {
-        public TaskItem TaskObject { get; private set; }
+        public ITaskItem TaskObject { get; set; }
         private XmlDocument XmlDoc { get; set; }
-        public CreateWindowsTask(TaskItem taskItem)
+        public CreateWindowsTask()
         {
-            TaskObject = taskItem;
             XmlDoc = new XmlDocument();
         }
 
@@ -31,8 +30,8 @@ namespace PlannerTool.TaskCreation
             CreateBatch(xmlName: taskname);
         }
 
-        public void CreateXML(string json, string xmlFileName = "Task")
-        {            
+        private void CreateXML(string json, string xmlFileName = "Task")
+        {
             XmlNode Declnode = XmlDoc.CreateXmlDeclaration("1.0", "UTF-16", string.Empty);
 
             XmlDoc.AppendChild(Declnode);
@@ -55,7 +54,7 @@ namespace PlannerTool.TaskCreation
             string triggerTime = this.GetTriggerTime();
             SubNodeFor(ref TimeTrigger, "StartBoundary", triggerTime); // Timed trigger
             string endTime = this.GetEndTime();
-            SubNodeFor( ref TimeTrigger, "EndBoundary", endTime);   // Set the end boundary 12hrs more
+            SubNodeFor(ref TimeTrigger, "EndBoundary", endTime);   // Set the end boundary 12hrs more
             SubNodeFor(ref TimeTrigger, "Enabled", "true");
 
             Triggers.AppendChild(TimeTrigger);
@@ -125,7 +124,7 @@ namespace PlannerTool.TaskCreation
         {
             if (!(TaskObject == null))
             {
-                string jsonString =  JsonConvert.SerializeObject(TaskObject).Replace("\"", "\\u022");
+                string jsonString = JsonConvert.SerializeObject(TaskObject).Replace("\"", "\\u022");
                 return jsonString;
             }
             return null;
